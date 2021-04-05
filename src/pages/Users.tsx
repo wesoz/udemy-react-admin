@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Wrapper from '../components/Wrapper';
 
-class Users extends Component {
-    render() {
-        return (
+const Users = () => {
+    return (
             <Wrapper>
             <div className="table-responsive">
             <table className="table table-striped table-sm">
@@ -35,8 +34,7 @@ class Users extends Component {
             </table>
           </div>
           </Wrapper>
-        );
-    }
+    );
 }
 
 export default Users;

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Wrapper from '../components/Wrapper';
 
-class Dashboard extends Component {
-    render () {
-        return (
+const Dashboard = () => {
+    return (
         <Wrapper>
             Dashboard
-        </Wrapper>);
-    }
+        </Wrapper>
+    );
 }
 
 export default Dashboard;

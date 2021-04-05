@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Menu from './Menu';
 import Nav from './Nav';
 
-class Wrapper extends Component {
-    render () {
-        return (
+const Wrapper = (props: any) => {
+    return (
         <>
             <Nav />
 
@@ -12,13 +11,12 @@ class Wrapper extends Component {
             <div className="row">
                 <Menu />
                 <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    {this.props.children}
+                    {props.children}
                 </main>
             </div>
             </div>
         </>
-        );
-    }
+    );
 }
 
 export default Wrapper;
