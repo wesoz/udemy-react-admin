@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from 'react';
 import '../Login.css';
+import axios from 'axios';
 
 const Register = () => {
     let first_name = '';
@@ -8,15 +9,21 @@ const Register = () => {
     let password = '';
     let password_confirm = '';
 
-    const submit = (e: SyntheticEvent) => {
+    const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        console.log(`
-        first_name: ${first_name};
-        last_name: ${last_name};
-        email: ${email};
-        password: ${password};
-        password_confirm: ${password_confirm};
-        `);
+
+        const data = {
+            first_name,
+            last_name,
+            email,
+            password,
+            password_confirm
+        }
+
+        const response = await axios.post('http://localhost:8000/api/register', data);
+        
+        console.log(response);
+
     };
 
     return (
