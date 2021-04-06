@@ -10,7 +10,6 @@ const Wrapper = (props: any) => {
     (async () => {
       try {
         const { data } = await axios.get("user");
-        console.log({ data });
       } catch (err) {
         setRedirect(true);
       }
