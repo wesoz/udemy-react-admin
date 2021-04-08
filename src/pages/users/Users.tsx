@@ -108,7 +108,6 @@ const Users = () => {
           </li>
         </ul>
       </nav>
-      <span></span>
     </Wrapper>
   );
 };
