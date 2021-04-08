@@ -30,6 +30,13 @@ const Users = () => {
     );
   };
 
+  const del = async (id: number) => {
+    if (window.confirm("Are you sure you whant to delete this record?")) {
+      await axios.delete(`users/${id}`);
+      setUsers(users.filter((u: User) => u.id !== id));
+    }
+  };
+
   return (
     <Wrapper>
       <div className="table-responsive">
@@ -51,7 +58,16 @@ const Users = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.role.name}</td>
-                  <td></td>
+                  <td>
+                    <div className="btn-group mr-2">
+                      <button
+                        className="btn btn-sm btn-outline-secondary"
+                        onClick={() => del(user.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               );
             })}
@@ -61,14 +77,14 @@ const Users = () => {
       <nav>
         <ul className="pagination">
           <li className="page-item">
-            <a href="#" className="page-link" onClick={previous}>
+            <button className="page-link" onClick={previous}>
               Previous
-            </a>
+            </button>
           </li>
           <li className="page-item">
-            <a href="#" className="page-link" onClick={next}>
+            <button className="page-link" onClick={next}>
               Next
-            </a>
+            </button>
           </li>
           <li className="page-item">
             <div style={{ paddingTop: "7px", paddingLeft: "7px" }}>
