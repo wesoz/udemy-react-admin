@@ -13,9 +13,12 @@ const Users = () => {
     (async () => {
       const { data: result } = await axios.get(`users?page=${page}`);
       setUsers(
-        result.data.map(
-          (u: any) => new User(u.id, u.first_name, u.last_name, u.email, u.role)
-        )
+        result.data
+          .map(
+            (u: any) =>
+              new User(u.id, u.first_name, u.last_name, u.email, u.role)
+          )
+          .sort((a: User, b: User) => a.id - b.id)
       );
       setMeta(result.meta);
     })();
@@ -66,6 +69,12 @@ const Users = () => {
                   <td>{user.role.name}</td>
                   <td>
                     <div className="btn-group mr-2">
+                      <Link
+                        to={`/users/${user.id}/edit`}
+                        className="btn btn-sm btn-outline-secondary"
+                      >
+                        Edit
+                      </Link>
                       <button
                         className="btn btn-sm btn-outline-secondary"
                         onClick={() => del(user.id)}
